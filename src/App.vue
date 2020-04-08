@@ -2,16 +2,18 @@
   <el-container>
     <el-header><car-header></car-header></el-header>
     <el-main><router-view/></el-main>
-    <el-footer>Footer</el-footer>
+    <el-footer><car-footer></car-footer></el-footer>
   </el-container>
 </template>
 
 <script>
 import CarHeader from '@/components/header/Header'
+import CarFooter from '@/components/footer/Footer'
 export default {
   name: 'App',
   components: {
-    CarHeader
+    CarHeader,
+    CarFooter
   }
 }
 </script>
