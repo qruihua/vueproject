@@ -1,5 +1,8 @@
 <template>
-  <ve-histogram :data="chartData"></ve-histogram>
+  <div class="charts-desc-rel">
+    <ve-histogram :data="chartData"></ve-histogram>
+    <span class="charts-desc-abs">图表说明</span>
+  </div>
 </template>
 
 <script>

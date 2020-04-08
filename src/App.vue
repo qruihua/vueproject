@@ -29,6 +29,6 @@ export default {
     text-align: center;
   }
   body > .el-container {
-    margin-bottom: 40px;
+    margin-bottom: 0;
   }
 </style>

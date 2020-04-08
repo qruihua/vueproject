@@ -26,18 +26,4 @@ export default {
 </script>>
 
 <style>
-  .charts-desc-rel {
-    position: relative;
-  }
-  .charts-desc-abs {
-    position: absolute;
-    left: 0;
-    bottom: 40px;
-    width: 100%;
-    font-size: 14px;
-    font-weight: 700;
-    text-align: center;
-    color: rgba(7,17,27,0.5);
-  }
-
 </style>
