@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-header><car-header></car-header></el-header>
-    <el-main>Main</el-main>
+    <el-main><router-view/></el-main>
     <el-footer>Footer</el-footer>
   </el-container>
 </template>
