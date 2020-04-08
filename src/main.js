@@ -8,11 +8,16 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 // 导入VCharts
 import VCharts from 'v-charts'
+import axios from 'axios'
 
 // 全局使用
 Vue.use(VCharts)
 Vue.use(ElementUI)
 Vue.config.productionTip = false
+// this.axios
+Vue.prototype.axios = axios.create({
+  baseURL: 'http://localhost:3000'
+})
 
 /* eslint-disable no-new */
 new Vue({
