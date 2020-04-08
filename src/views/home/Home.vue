@@ -22,7 +22,11 @@
       </div>
     </el-col>
     <!--中间的地图-->
-    <el-col :span="12"><div class="grid-content bg-purple-light">2</div></el-col>
+    <el-col :span="12">
+      <div class="grid-content bg-purple-light">
+        <car-b-map></car-b-map>
+      </div>
+    </el-col>
     <!--右边的服务人数前10名和售卖人数前10名-->
     <el-col :span="6">
       <div class="grid-content bg-purple">
@@ -50,10 +54,12 @@
 <script>
 import CarPie from '@/components/charts/CarPie'
 import CarHistogram from '@/components/charts/CarHistogram'
+import CarBMap from '@/components/map/CarBMap'
 export default {
   components: {
     CarPie,
-    CarHistogram
+    CarHistogram,
+    CarBMap
   }
 }
 </script>
