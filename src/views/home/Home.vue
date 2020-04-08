@@ -5,11 +5,19 @@
       <div class="grid-content bg-purple">
         <!--服务总人数-->
         <el-row>
-          <el-col :span="24"><div class="grid-content bg-purple-dark">1上</div></el-col>
+          <el-col :span="24">
+            <div class="grid-content bg-purple-dark">
+              <car-pie></car-pie>
+            </div>
+          </el-col>
         </el-row>
         <!--售卖总人数-->
         <el-row>
-          <el-col :span="24"><div class="grid-content bg-purple-dark">1下</div></el-col>
+          <el-col :span="24">
+            <div class="grid-content bg-purple-dark">
+              <car-pie></car-pie>
+            </div>
+          </el-col>
         </el-row>
       </div>
     </el-col>
@@ -32,7 +40,11 @@
 </template>
 
 <script>
+import CarPie from '@/components/charts/CarPie'
 export default {
+  components: {
+    CarPie
+  }
 }
 </script>
 
