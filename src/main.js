@@ -6,7 +6,11 @@ import router from './router'
 // 导入ElementUI
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+// 导入VCharts
+import VCharts from 'v-charts'
+
 // 全局使用
+Vue.use(VCharts)
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 

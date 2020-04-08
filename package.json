@@ -13,7 +13,9 @@
     "mockdev": "npm run mock | npm run dev"
   },
   "dependencies": {
+    "echarts": "^4.7.0",
     "element-ui": "^2.13.0",
+    "v-charts": "^1.19.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
