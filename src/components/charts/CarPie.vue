@@ -1,5 +1,8 @@
 <template>
-  <ve-pie :data="chartData"></ve-pie>
+  <div class="charts-desc-rel">
+    <ve-pie :data="chartData"></ve-pie>
+    <span class="charts-desc-abs">图表说明</span>
+  </div>
 </template>
 
 <script>
@@ -23,4 +26,18 @@ export default {
 </script>>
 
 <style>
+  .charts-desc-rel {
+    position: relative;
+  }
+  .charts-desc-abs {
+    position: absolute;
+    left: 0;
+    bottom: 40px;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    color: rgba(7,17,27,0.5);
+  }
+
 </style>
