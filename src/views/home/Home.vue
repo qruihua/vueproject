@@ -28,11 +28,19 @@
       <div class="grid-content bg-purple">
         <!--服务人数前10名-->
         <el-row>
-          <el-col :span="24"><div class="grid-content bg-purple-dark">3上</div></el-col>
+          <el-col :span="24">
+            <div class="grid-content bg-purple-dark">
+              <car-histogram></car-histogram>
+            </div>
+          </el-col>
         </el-row>
         <!--售卖人数前10名-->
         <el-row>
-          <el-col :span="24"><div class="grid-content bg-purple-dark">3下</div></el-col>
+          <el-col :span="24">
+            <div class="grid-content bg-purple-dark">
+              <car-histogram></car-histogram>
+            </div>
+          </el-col>
         </el-row>
       </div>
     </el-col>
@@ -41,9 +49,11 @@
 
 <script>
 import CarPie from '@/components/charts/CarPie'
+import CarHistogram from '@/components/charts/CarHistogram'
 export default {
   components: {
-    CarPie
+    CarPie,
+    CarHistogram
   }
 }
 </script>
