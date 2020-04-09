@@ -7,7 +7,7 @@
         <el-row>
           <el-col :span="24">
             <div class="grid-content bg-purple-dark">
-              <car-pie></car-pie>
+              <car-pie v-bind:chartData="totalServicesData" :chartDesc="totalServicesChartDesc"></car-pie>
             </div>
           </el-col>
         </el-row>
@@ -60,6 +60,28 @@ export default {
     CarPie,
     CarHistogram,
     CarBMap
+  },
+  data () {
+    return {
+      totalServicesData: [],
+      totalServicesChartDesc: '服务总人数'
+    }
+  },
+  mounted () {
+    this.getTotalServiceData()
+  },
+  methods: {
+    getTotalServiceData: function () {
+      let url = '/totalservices'
+      this.axios.get(url).then((response) => {
+        this.totalServicesData = {
+          columns: ['name', 'num'],
+          rows: response.data
+        }
+      }).catch((e) => {
+        console.log(e)
+      })
+    }
   }
 }
 </script>
