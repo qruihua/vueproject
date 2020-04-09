@@ -68,7 +68,9 @@ export default {
     }
   },
   mounted () {
-    this.getTotalServiceData()
+    // 监听事件
+    this.$root.$on('mapChange', this.reloadData)
+    this.$root.$on('dateChange', this.reloadData)
   },
   methods: {
     getTotalServiceData: function () {
@@ -81,6 +83,14 @@ export default {
       }).catch((e) => {
         console.log(e)
       })
+    },
+    reloadData: function (info) {
+      if (info.type === 1) {
+        alert('城市变化')
+      } else {
+        alert('日期变化')
+      }
+      this.getTotalServiceData()
     }
   }
 }

@@ -53,10 +53,18 @@ export default {
   },
   methods: {
     cityChanged: function (value) {
-      alert(value)
+      let info = {
+        type: 1,
+        value: value
+      }
+      this.$root.$emit('mapChange', info)
     },
     dateChange: function (value) {
-      alert(value)
+      let info = {
+        type: 2,
+        value: value
+      }
+      this.$root.$emit('dateChange', info)
     }
   }
 }
