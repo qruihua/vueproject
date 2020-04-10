@@ -13,7 +13,12 @@
       </el-row>
       <!--第二行内容-->
       <el-row>
-        <el-col :span="8"><div class="grid-content bg-purple">2.1</div></el-col>
+        <!--门店售卖总人数-->
+        <el-col :span="8">
+          <div class="grid-content bg-purple">
+            <car-pie :chartDesc="shopSellsDesc" :chartData="shopSellsData"></car-pie>
+          </div>
+        </el-col>
         <el-col :span="8"><div class="grid-content bg-purple-light">2.2</div></el-col>
         <el-col :span="8"><div class="grid-content bg-purple">2.3</div></el-col>
       </el-row>
@@ -29,12 +34,16 @@ export default {
   data () {
     return {
       shopServicesDesc: '门店服务总人数',
-      shopServicesData: []
+      shopServicesData: [],
+      shopSellsDesc: '门店售卖总人数',
+      shopSellsData: []
     }
   },
   mounted: function () {
     // 获取门店服务总人数
     this.getShopServiceData()
+    // 获取门店总售卖数
+    this.getShopSellData()
   },
   methods: {
     // 获取门店服务总人数
@@ -42,6 +51,18 @@ export default {
       let url = '/shopservices/?city=' + this.common.city.id + '&date=' + this.common.date + '&shopid=' + this.$route.params.shopid
       this.axios.get(url).then((response) => {
         this.shopServicesData = {
+          columns: ['name', 'num'],
+          rows: response.data
+        }
+      }).catch((e) => {
+        console.log(e)
+      })
+    },
+    // 获取门店总售卖数
+    getShopSellData: function () {
+      let url = '/shopsells/?city=' + this.common.city.id + '&date=' + this.common.date + '&shopid=' + this.$route.params.shopid
+      this.axios.get(url).then((response) => {
+        this.shopSellsData = {
           columns: ['name', 'num'],
           rows: response.data
         }
