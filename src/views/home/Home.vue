@@ -87,7 +87,6 @@ export default {
       let city = this.common.city.id
       let date = this.common.date
       let url = '/totalservices?city=' + city + '&date=' + date
-      alert(url)
       this.axios.get(url).then((response) => {
         this.totalServicesData = {
           columns: ['name', 'num'],

@@ -46,7 +46,7 @@ export default {
       }
     },
     itemClick: function (e) {
-      alert('详情页面')
+      this.$router.push({name: 'detail', params: {shopid: e.target.shopid}})
     }
   },
   mounted () {

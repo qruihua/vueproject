@@ -25,9 +25,10 @@
         <span class="title">传智汽车4s店服务综合平台</span>
       </div>
     </el-col>
+    <!--右侧 首页按钮-->
     <el-col :span="8">
       <div class="grid-content bg-purple right-content">
-        <el-button class="home-button">首页</el-button>
+        <router-link :to="{name: 'home' }"><el-button class="home-button">首页</el-button></router-link>
       </div>
     </el-col>
   </el-row>
