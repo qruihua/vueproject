@@ -78,7 +78,9 @@ export default {
   },
   mounted () {
     // 监听事件
+    this.$root.$off('mapChange')
     this.$root.$on('mapChange', this.reloadData)
+    this.$root.$off('dateChange')
     this.$root.$on('dateChange', this.reloadData)
     this.reloadData({type: 1})
   },
@@ -142,6 +144,7 @@ export default {
       })
     },
     reloadData: function (info) {
+      // alert('reload home')
       if (info.type === 1) {
         this.getShopData()
       }

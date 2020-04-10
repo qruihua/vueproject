@@ -76,20 +76,32 @@ export default {
     }
   },
   mounted: function () {
-    // 获取门店服务总人数
-    this.getShopServiceData()
-    // 获取门店总售卖数
-    this.getShopSellData()
-    // 获取门店分段服务人数
-    this.getShopTimeServiceData()
-    // 获取门店分段售卖数
-    this.getShopTimeSellData()
-    // 获取服务前3人
-    this.getShopTopServiceData()
-    // 获取售卖前3人
-    this.getShopTopSellData()
+    // 监听城市变化
+    this.$root.$off('mapChange')
+    this.$root.$on('mapChange', this.reloadAll)
+    // 监听时间变化
+    this.$root.$off('dateChange')
+    this.$root.$on('dateChange', this.reloadAll)
+    // 获取所有数据
+    this.reloadAll()
   },
   methods: {
+  methods: {
+    reloadAll: function () {
+      // alert('detail ~~ reload')
+      // 获取门店服务总人数
+      this.getShopServiceData()
+      // 获取门店总售卖数
+      this.getShopSellData()
+      // 获取门店分段服务人数
+      this.getShopTimeServiceData()
+      // 获取门店分段售卖数
+      this.getShopTimeSellData()
+      // 获取服务前3人
+      this.getShopTopServiceData()
+      // 获取售卖前3人
+      this.getShopTopSellData()
+    },
     // 获取门店服务总人数
     getShopServiceData: function () {
       let url = '/shopservices/?city=' + this.common.city.id + '&date=' + this.common.date + '&shopid=' + this.$route.params.shopid
