@@ -42,7 +42,7 @@
         <el-row>
           <el-col :span="24">
             <div class="grid-content bg-purple-dark">
-              <car-histogram></car-histogram>
+              <car-histogram :chartDesc="topSellsDesc" :chartData="topSellsData" :legendName="topSellslegendName"></car-histogram>
             </div>
           </el-col>
         </el-row>
@@ -70,7 +70,10 @@ export default {
       shops: [],
       topServicesData: [],
       topServicesDesc: '服务人数前10名',
-      topServiceslegendName: '人数'
+      topServiceslegendName: '人数',
+      topSellsData: [],
+      topSellsDesc: '售卖数量前10名',
+      topSellslegendName: '辆'
     }
   },
   mounted () {
@@ -127,6 +130,18 @@ export default {
         console.log(e)
       })
     },
+    // 获取售卖前10人
+    getTopSellData: function () {
+      let url = '/topsells/?city=' + this.common.city.id + '&date=' + this.common.date
+      this.axios.get(url).then((response) => {
+        this.topSellsData = {
+          columns: ['name', 'num'],
+          rows: response.data
+        }
+      }).catch((e) => {
+        console.log(e)
+      })
+    },
     reloadData: function (info) {
       if (info.type === 1) {
         this.getShopData()
@@ -134,6 +149,7 @@ export default {
       this.getTotalServiceData()
       this.getTotalSellData()
       this.getTopServiceData()
+      this.getTopSellData()
     }
   }
 }
