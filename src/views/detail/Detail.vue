@@ -8,7 +8,12 @@
             <car-pie :chartDesc="shopServicesDesc" :chartData="shopServicesData"></car-pie>
           </div>
         </el-col>
-        <el-col :span="8"><div class="grid-content bg-purple-light">1.2</div></el-col>
+        <!--门店时段服务人数-->
+        <el-col :span="8">
+          <div class="grid-content bg-purple-light">
+            <car-line :chartData="shopTimeServicesData" :chartDesc="shopTimeServicesDesc" :legendName="shopTimeServiceslegendName"></car-line>
+          </div>
+        </el-col>
         <el-col :span="8"><div class="grid-content bg-purple">1.3</div></el-col>
       </el-row>
       <!--第二行内容-->
@@ -27,16 +32,21 @@
 
 <script>
 import CarPie from '@/components/charts/CarPie'
+import CarLine from '@/components/charts/CarLine'
 export default {
   components: {
-    CarPie
+    CarPie,
+    CarLine
   },
   data () {
     return {
       shopServicesDesc: '门店服务总人数',
       shopServicesData: [],
       shopSellsDesc: '门店售卖总人数',
-      shopSellsData: []
+      shopSellsData: [],
+      shopTimeServicesData: [],
+      shopTimeServiceslegendName: '人数',
+      shopTimeSellsDesc: '时段售卖数'
     }
   },
   mounted: function () {
@@ -44,6 +54,8 @@ export default {
     this.getShopServiceData()
     // 获取门店总售卖数
     this.getShopSellData()
+    // 获取门店分段服务人数
+    this.getShopTimeServiceData()
   },
   methods: {
     // 获取门店服务总人数
@@ -64,6 +76,18 @@ export default {
       this.axios.get(url).then((response) => {
         this.shopSellsData = {
           columns: ['name', 'num'],
+          rows: response.data
+        }
+      }).catch((e) => {
+        console.log(e)
+      })
+    },
+    // 获取门店分段服务人数
+    getShopTimeServiceData: function () {
+      let url = '/timeshopservices/?city=' + this.common.city.id + '&date=' + this.common.date + '&shopid=' + this.$route.params.shopid
+      this.axios.get(url).then((response) => {
+        this.shopTimeServicesData = {
+          columns: ['time', 'count'],
           rows: response.data
         }
       }).catch((e) => {
