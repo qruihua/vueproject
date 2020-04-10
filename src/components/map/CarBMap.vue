@@ -5,6 +5,17 @@
 <script>
 import BMap from 'BMap'
 export default {
+  props: ['shopData'],
+  watch: {
+    shopData: function (value) {
+      this.showCityShop()
+    }
+  },
+  methods: {
+    showCityShop: function () {
+      alert('添加锚点')
+    }
+  },
   mounted () {
     var map = new BMap.Map(this.$refs.carmap)
     var point = new BMap.Point(116.404, 39.915)

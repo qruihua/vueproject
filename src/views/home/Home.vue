@@ -24,7 +24,7 @@
     <!--中间的地图-->
     <el-col :span="12">
       <div class="grid-content bg-purple-light">
-        <car-b-map></car-b-map>
+        <car-b-map :shopData="shops"></car-b-map>
       </div>
     </el-col>
     <!--右边的服务人数前10名和售卖人数前10名-->
@@ -66,7 +66,8 @@ export default {
       totalServicesData: [],
       totalServicesChartDesc: '服务总人数',
       totalSellsData: [],
-      totalSellsChartDesc: '售卖量数据'
+      totalSellsChartDesc: '售卖量数据',
+      shops: []
     }
   },
   mounted () {
@@ -102,11 +103,18 @@ export default {
         console.log(e)
       })
     },
+    // 获取门店数据
+    getShopData: function () {
+      let url = '/shops/?city=' + this.common.city.id + '&date=' + this.common.date
+      this.axios.get(url).then((response) => {
+        this.shops = response.data
+      }).catch((e) => {
+        console.log(e)
+      })
+    },
     reloadData: function (info) {
       if (info.type === 1) {
-        alert('城市变化')
-      } else {
-        alert('日期变化')
+        this.getShopData()
       }
       this.getTotalServiceData()
       this.getTotalSellData()
