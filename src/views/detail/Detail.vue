@@ -36,7 +36,11 @@
           </div>
         </el-col>
         <!--2.3 柱状图 门店售卖量排行前3位-->
-        <el-col :span="8"><div class="grid-content bg-purple">2.3</div></el-col>
+        <el-col :span="8">
+          <div class="grid-content bg-purple">
+            <car-histogram :chartDesc="shopTopSellsDesc" :chartData="shopTopSellsData" :legendName="shopTopSellslegendName"></car-histogram>
+          </div>
+        </el-col>
       </el-row>
     </div>
 </template>
@@ -65,7 +69,10 @@ export default {
       shopTimeSellslegendName: '辆',
       shopTopServicesDesc: '门店服务人数前3名',
       shopTopServiceslegendName: '人数',
-      shopTopServicesData: []
+      shopTopServicesData: [],
+      shopTopSellsDesc: '门店售卖数量前3名',
+      shopTopSellslegendName: '辆',
+      shopTopSellsData: []
     }
   },
   mounted: function () {
@@ -79,6 +86,8 @@ export default {
     this.getShopTimeSellData()
     // 获取服务前3人
     this.getShopTopServiceData()
+    // 获取售卖前3人
+    this.getShopTopSellData()
   },
   methods: {
     // 获取门店服务总人数
@@ -134,6 +143,18 @@ export default {
       let url = '/shoptopservices/?city=' + this.common.city.id + '&date=' + this.common.date + '&shopid=' + this.$route.params.shopid
       this.axios.get(url).then((response) => {
         this.shopTopServicesData = {
+          columns: ['name', 'num'],
+          rows: response.data
+        }
+      }).catch((e) => {
+        console.log(e)
+      })
+    },
+    // 获取售卖前3人
+    getShopTopSellData: function () {
+      let url = '/shoptopsells/?city=' + this.common.city.id + '&date=' + this.common.date + '&shopid=' + this.$route.params.shopid
+      this.axios.get(url).then((response) => {
+        this.shopTopSellsData = {
           columns: ['name', 'num'],
           rows: response.data
         }
