@@ -38,15 +38,17 @@ export default {
   data () {
     return {
       cities: [],
-      city: '',
-      date: Date()
+      // 使用common中的默认值
+      city: this.common.city,
+      date: this.common.date
     }
   },
   mounted () {
     // 请求获取地区数据
     this.axios.get('/cities').then((response) => {
       this.cities = response.data
-      this.city = this.cities[0]
+      // 保存到common中
+      this.common.city = this.cities[0]
     }).catch((e) => {
       console.log(e)
     })
@@ -54,16 +56,16 @@ export default {
   methods: {
     cityChanged: function (value) {
       let info = {
-        type: 1,
-        value: value
+        type: 1
       }
+      this.common.city = value
       this.$root.$emit('mapChange', info)
     },
     dateChange: function (value) {
       let info = {
-        type: 2,
-        value: value
+        type: 2
       }
+      this.common.date = value
       this.$root.$emit('dateChange', info)
     }
   }

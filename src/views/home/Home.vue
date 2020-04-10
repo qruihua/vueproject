@@ -11,11 +11,11 @@
             </div>
           </el-col>
         </el-row>
-        <!--售卖总人数-->
+        <!--售卖量数据-->
         <el-row>
           <el-col :span="24">
             <div class="grid-content bg-purple-dark">
-              <car-pie></car-pie>
+              <car-pie :chartData="totalSellsData" :chartDesc="totalSellsChartDesc" ></car-pie>
             </div>
           </el-col>
         </el-row>
@@ -64,19 +64,37 @@ export default {
   data () {
     return {
       totalServicesData: [],
-      totalServicesChartDesc: '服务总人数'
+      totalServicesChartDesc: '服务总人数',
+      totalSellsData: [],
+      totalSellsChartDesc: '售卖量数据'
     }
   },
   mounted () {
     // 监听事件
     this.$root.$on('mapChange', this.reloadData)
     this.$root.$on('dateChange', this.reloadData)
+    this.reloadData({type: 1})
   },
   methods: {
     getTotalServiceData: function () {
-      let url = '/totalservices'
+      let city = this.common.city.id
+      let date = this.common.date
+      let url = '/totalservices?city=' + city + '&date=' + date
+      alert(url)
       this.axios.get(url).then((response) => {
         this.totalServicesData = {
+          columns: ['name', 'num'],
+          rows: response.data
+        }
+      }).catch((e) => {
+        console.log(e)
+      })
+    },
+    // 获取总售卖数
+    getTotalSellData: function () {
+      let url = '/totalsells?city=' + this.common.city.id + '&date=' + this.common.date
+      this.axios.get(url).then((response) => {
+        this.totalSellsData = {
           columns: ['name', 'num'],
           rows: response.data
         }
@@ -91,6 +109,7 @@ export default {
         alert('日期变化')
       }
       this.getTotalServiceData()
+      this.getTotalSellData()
     }
   }
 }

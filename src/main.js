@@ -9,7 +9,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 // 导入VCharts
 import VCharts from 'v-charts'
 import axios from 'axios'
+import Common from '@/components/common/Common'
 
+// 全局使用，使用方法为:this.common
+Vue.prototype.common = Common
 // 全局使用
 Vue.use(VCharts)
 Vue.use(ElementUI)
