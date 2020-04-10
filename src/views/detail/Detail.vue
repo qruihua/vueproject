@@ -86,84 +86,83 @@ export default {
     this.reloadAll()
   },
   methods: {
-    methods: {
-      reloadAll: function () {
-        // alert('detail ~~ reload')
-        // 获取门店服务总人数
-        this.getShopServiceData()
-        // 获取门店总售卖数
-        this.getShopSellData()
-        // 获取门店分段服务人数
-        this.getShopTimeServiceData()
-        // 获取门店分段售卖数
-        this.getShopTimeSellData()
-        // 获取服务前3人
-        this.getShopTopServiceData()
-        // 获取售卖前3人
-        this.getShopTopSellData()
-      },
+    reloadAll: function () {
+      // alert('detail ~~ reload')
       // 获取门店服务总人数
-      getShopServiceData: function () {
-        let url = '/shopservices/?city=' + this.common.city.id + '&date=' + this.common.date + '&shopid=' + this.$route.params.shopid
-        this.axios.get(url).then((response) => {
-          this.shopServicesData = {
-            columns: ['name', 'num'],
-            rows: response.data
-          }
-        }).catch((e) => {
-          console.log(e)
-        })
-      },
+      this.getShopServiceData()
       // 获取门店总售卖数
-      getShopSellData: function () {
-        let url = '/shopsells/?city=' + this.common.city.id + '&date=' + this.common.date + '&shopid=' + this.$route.params.shopid
-        this.axios.get(url).then((response) => {
-          this.shopSellsData = {
-            columns: ['name', 'num'],
-            rows: response.data
-          }
-        }).catch((e) => {
-          console.log(e)
-        })
-      },
+      this.getShopSellData()
       // 获取门店分段服务人数
-      getShopTimeServiceData: function () {
-        let url = '/timeshopservices/?city=' + this.common.city.id + '&date=' + this.common.date + '&shopid=' + this.$route.params.shopid
-        this.axios.get(url).then((response) => {
-          this.shopTimeServicesData = {
-            columns: ['time', 'count'],
-            rows: response.data
-          }
-        }).catch((e) => {
-          console.log(e)
-        })
-      },
+      this.getShopTimeServiceData()
       // 获取门店分段售卖数
-      getShopTimeSellData: function () {
-        let url = '/timeshopsells/?city=' + this.common.city.id + '&date=' + this.common.date + '&shopid=' + this.$route.params.shopid
-        this.axios.get(url).then((response) => {
-          this.shopTimeSellsData = {
-            columns: ['time', 'count'],
-            rows: response.data
-          }
-        }).catch((e) => {
-          console.log(e)
-        })
-      },
+      this.getShopTimeSellData()
       // 获取服务前3人
-      getShopTopServiceData: function () {
-        let url = '/shoptopservices/?city=' + this.common.city.id + '&date=' + this.common.date + '&shopid=' + this.$route.params.shopid
-        this.axios.get(url).then((response) => {
-          this.shopTopServicesData = {
-            columns: ['name', 'num'],
-            rows: response.data
-          }
-        }).catch((e) => {
-          console.log(e)
-        })
-      },
+      this.getShopTopServiceData()
       // 获取售卖前3人
-      getShopTopSellData: function () {
+      this.getShopTopSellData()
+    },
+    // 获取门店服务总人数
+    getShopServiceData: function () {
+      let url = '/shopservices/?city=' + this.common.city.id + '&date=' + this.common.date + '&shopid=' + this.$route.params.shopid
+      this.axios.get(url).then((response) => {
+        this.shopServicesData = {
+          columns: ['name', 'num'],
+          rows: response.data
+        }
+      }).catch((e) => {
+        console.log(e)
+      })
+    },
+    // 获取门店总售卖数
+    getShopSellData: function () {
+      let url = '/shopsells/?city=' + this.common.city.id + '&date=' + this.common.date + '&shopid=' + this.$route.params.shopid
+      this.axios.get(url).then((response) => {
+        this.shopSellsData = {
+          columns: ['name', 'num'],
+          rows: response.data
+        }
+      }).catch((e) => {
+        console.log(e)
+      })
+    },
+    // 获取门店分段服务人数
+    getShopTimeServiceData: function () {
+      let url = '/timeshopservices/?city=' + this.common.city.id + '&date=' + this.common.date + '&shopid=' + this.$route.params.shopid
+      this.axios.get(url).then((response) => {
+        this.shopTimeServicesData = {
+          columns: ['time', 'count'],
+          rows: response.data
+        }
+      }).catch((e) => {
+        console.log(e)
+      })
+    },
+    // 获取门店分段售卖数
+    getShopTimeSellData: function () {
+      let url = '/timeshopsells/?city=' + this.common.city.id + '&date=' + this.common.date + '&shopid=' + this.$route.params.shopid
+      this.axios.get(url).then((response) => {
+        this.shopTimeSellsData = {
+          columns: ['time', 'count'],
+          rows: response.data
+        }
+      }).catch((e) => {
+        console.log(e)
+      })
+    },
+    // 获取服务前3人
+    getShopTopServiceData: function () {
+      let url = '/shoptopservices/?city=' + this.common.city.id + '&date=' + this.common.date + '&shopid=' + this.$route.params.shopid
+      this.axios.get(url).then((response) => {
+        this.shopTopServicesData = {
+          columns: ['name', 'num'],
+          rows: response.data
+        }
+      }).catch((e) => {
+        console.log(e)
+      })
+    },
+    // 获取售卖前3人
+    getShopTopSellData: function () {
         let url = '/shoptopsells/?city=' + this.common.city.id + '&date=' + this.common.date + '&shopid=' + this.$route.params.shopid
         this.axios.get(url).then((response) => {
           this.shopTopSellsData = {
@@ -174,7 +173,6 @@ export default {
           console.log(e)
         })
       }
-    }
   }
 }
 </script>
