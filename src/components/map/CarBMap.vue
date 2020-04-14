@@ -20,7 +20,7 @@ export default {
       *http://lbsyun.baidu.com/jsdemo.htm#h0_1 给覆盖物添加事件
       * */
       let map = new BMap.Map(this.$refs.carmap)
-      map.centerAndZoom(this.common.city.name, 15)
+      map.centerAndZoom(this.common.city.name, 10)
       map.enableScrollWheelZoom(true)// 开启鼠标滚轮缩放
       for (let i = 0; i < this.shopData.length; i++) {
         let item = this.shopData[i]
@@ -52,7 +52,7 @@ export default {
   mounted () {
     var map = new BMap.Map(this.$refs.carmap)
     var point = new BMap.Point(116.404, 39.915)
-    map.centerAndZoom(point, 15)
+    map.centerAndZoom(point, 10)
   }
 }
 </script>

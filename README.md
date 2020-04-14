@@ -8,6 +8,9 @@
 # install dependencies
 npm install
 
+# localhost:3000
+npm run mock
+
 # serve with hot reload at localhost:8080
 npm run dev
 
